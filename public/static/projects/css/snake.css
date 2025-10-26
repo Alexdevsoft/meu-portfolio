@@ -118,7 +118,7 @@ h1 {
     grid-row: 2;
 }
 
-.btn-start {
+#startBtn {
     padding: 15px 40px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -130,7 +130,7 @@ h1 {
     transition: all 0.3s ease;
 }
 
-.btn-start:hover {
+#startBtn:hover {
     background: #0d7a6f;
     transform: translateY(-2px);
 }

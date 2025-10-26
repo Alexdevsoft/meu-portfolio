@@ -29,6 +29,9 @@ function startGame() {
 
     if (gameInterval) clearInterval(gameInterval);
     gameInterval = setInterval(gameLoop, 100);
+
+    // Foca o canvas para garantir que as teclas funcionem
+    canvas.focus();
 }
 
 function pauseGame() {
@@ -47,13 +50,13 @@ function gameLoop() {
         y: snake[0].y + direction.y
     };
 
-    // Check wall collision
+    // Colisão com parede
     if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
         endGame();
         return;
     }
 
-    // Check self collision
+    // Colisão com o corpo
     if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
         endGame();
         return;
@@ -61,7 +64,7 @@ function gameLoop() {
 
     snake.unshift(head);
 
-    // Check food collision
+    // Comer a comida
     if (head.x === food.x && head.y === food.y) {
         score++;
         document.getElementById('score').textContent = score;
@@ -81,11 +84,10 @@ function gameLoop() {
 }
 
 function draw() {
-    // Clear canvas
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw grid
+    // Grid
     ctx.strokeStyle = '#1a1a1a';
     for (let i = 0; i < tileCount; i++) {
         ctx.beginPath();
@@ -98,7 +100,7 @@ function draw() {
         ctx.stroke();
     }
 
-    // Draw snake
+    // Cobra
     snake.forEach((segment, index) => {
         ctx.fillStyle = index === 0 ? '#38ef7d' : '#11998e';
         ctx.fillRect(
@@ -109,7 +111,7 @@ function draw() {
         );
     });
 
-    // Draw food
+    // Comida
     ctx.fillStyle = '#ff6b6b';
     ctx.beginPath();
     ctx.arc(
@@ -141,7 +143,7 @@ function changeDirection(dir) {
 
     const newDir = directions[dir];
 
-    // Prevent 180 degree turns
+    // Evita virar 180 graus
     if (newDir.x !== -direction.x || newDir.y !== -direction.y) {
         nextDirection = newDir;
     }
@@ -154,7 +156,7 @@ function endGame() {
     document.getElementById('startBtn').textContent = '🔄 Jogar Novamente';
 }
 
-// Keyboard controls
+// Controles do teclado
 document.addEventListener('keydown', (e) => {
     const keyMap = {
         'ArrowUp': 'up',
@@ -172,15 +174,19 @@ document.addEventListener('keydown', (e) => {
         changeDirection(keyMap[e.key]);
     }
 
+    // Espaço para iniciar
     if (e.key === ' ') {
         e.preventDefault();
-        if (!gameRunning && document.getElementById('startBtn').textContent !== '⏸️ Pausar') {
+        const btn = document.getElementById('startBtn');
+        if (btn.textContent === '⏸️ Pausar') {
+            pauseGame();
+        } else {
             startGame();
         }
     }
 });
 
-// Start button handler
+// Botão iniciar/pausar
 document.getElementById('startBtn').addEventListener('click', () => {
     const btn = document.getElementById('startBtn');
     if (btn.textContent === '⏸️ Pausar') {
@@ -190,5 +196,5 @@ document.getElementById('startBtn').addEventListener('click', () => {
     }
 });
 
-// Initial draw
+// Inicializa com a tela desenhada
 draw();
