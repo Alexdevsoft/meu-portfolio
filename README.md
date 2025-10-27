@@ -191,7 +191,7 @@ npm run build
 pm2 start ecosystem.config.cjs
 
 # Testar
-curl http://localhost:3000
+curl http://localhost:5173
 
 # Verificar logs
 pm2 logs alexsandro.almeida --nostream
@@ -203,8 +203,8 @@ pm2 delete alexsandro.almeida
 ## 📝 Comandos Úteis
 
 ```bash
-# Limpar porta 3000
-fuser -k 3000/tcp
+# Limpar porta 5173
+fuser -k 5173/tcp
 
 # Rebuild e restart
 npm run build && pm2 restart alexsandro.almeida
