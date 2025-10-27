@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 
+
 const app = new Hono()
 
 // Serve static files
@@ -8,7 +9,7 @@ app.use('/static/*', serveStatic({ root: './public' }))
 
 // Main portfolio page
 app.get('/', (c) => {
-  return c.html(`
+    return c.html(`
     <!DOCTYPE html>
     <html lang="pt-BR">
     <head>
@@ -27,8 +28,9 @@ app.get('/', (c) => {
                 <div class="profile-info">
                     <h1>Alexsandro Almeida</h1>
                     <div class="contact-info">
-                        <p><i class="icon">✉️</i> <a href="mailto:alexhavilla2022@gmail.com">alexhavilla2022@gmail.com</a></p>
+                        <p><i class="icon">📧</i> <a href="mailto:alexhavilla2022@gmail.com">alexhavilla2022@gmail.com</a></p>
                         <p><i class="icon">💻</i> <a href="https://github.com/Alexdevsoft" target="_blank">github.com/Alexdevsoft</a></p>
+                        <p><i class="icon">💻</i> <a href="https://www.linkedin.com/in/alexsandro-j-a-almeida" target="_blank">linkedin.com/in/alexsandro-j-a-almeida/Alexdevsoft</a></p>
                     </div>
                 </div>
             </header>
