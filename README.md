@@ -6,14 +6,12 @@ Portfólio pessoal interativo desenvolvido com Hono Framework e Cloudflare Pages
 
 ## 🌐 URLs
 
-- **GitHub**: (Aguardando deploy)
-- **Produção**: (Aguardando deploy no Cloudflare Pages)
+- **GitHub**: [(Alexdevsoft](https://github.com/Alexdevsoft/meu-portfolio)
 
 ## 👨‍💻 Informações de Contato
 
 - **Nome**: Alexsandro Almeida
 - **Email**: alexhavilla2022@gmail.com
-- **GitHub**: https://github.com/Alexdevsoft
 
 ## ✨ Funcionalidades Implementadas
 
@@ -68,7 +66,8 @@ Portfólio pessoal interativo desenvolvido com Hono Framework e Cloudflare Pages
 ## 🎨 Arquitetura de Dados
 
 ### Estrutura do Projeto
-```
+
+```mermaid
 alexsandro.almeida/
 ├── src/
 │   └── index.tsx              # Backend Hono (servidor)
