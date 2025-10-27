@@ -68,24 +68,33 @@ Portfólio pessoal interativo desenvolvido com Hono Framework e Cloudflare Pages
 ### Estrutura do Projeto
 
 ```mermaid
-alexsandro.almeida/
-├── src/
-│   └── index.tsx              # Backend Hono (servidor)
-├── public/
-│   └── static/
-│       ├── css/
-│       │   └── style.css      # Estilos do portfólio
-│       ├── js/
-│       │   └── main.js        # Lógica do portfólio
-│       └── projects/
-│           ├── calculadora.html
-│           ├── crud.html
-│           ├── todo.html
-│           ├── snake.html
-│           └── password.html
-├── ecosystem.config.cjs       # Configuração PM2
-├── wrangler.jsonc            # Configuração Cloudflare
-└── package.json
+graph TD
+    A[alexsandro.almeida/] --> B[src/]
+    B --> B1[index.tsx]
+
+    A --> C[public/]
+    C --> C1[static/]
+    C1 --> C2[css/]
+    C2 --> C2a[style.css]
+    C1 --> C3[js/]
+    C3 --> C3a[main.js]
+    C1 --> C4[projects/]
+    C4 --> C4a[calculadora.html]
+    C4 --> C4b[crud.html]
+    C4 --> C4c[todo.html]
+    C4 --> C4d[snake.html]
+    C4 --> C4e[password.html]
+
+    A --> D[ecosystem.config.cjs]
+    A --> E[wrangler.jsonc]
+    A --> F[package.json]
+
+    %% Estilos visuais
+    classDef folder fill:#3b82f6,stroke:#1e3a8a,stroke-width:1px,color:#fff;
+    classDef file fill:#facc15,stroke:#92400e,stroke-width:1px,color:#111;
+
+    class A,B,C,C1,C2,C3,C4 folder;
+    class B1,C2a,C3a,C4a,C4b,C4c,C4d,C4e,D,E,F file;
 ```
 
 ### Armazenamento de Dados
